@@ -1,1 +1,2 @@
-doc prueba editado por A,creando conflicto en rama 2 y rama 1
+doc prueba editado por A, creando conflicto en rama 2 y rama 1
+Actualización realizada en la rama docs_pruebas2 para Pull Request
