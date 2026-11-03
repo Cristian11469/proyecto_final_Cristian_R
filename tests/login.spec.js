@@ -1,48 +1,23 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const { test } = require('@playwright/test');
-const { LoginPage } = require('../pages/LoginPage');
+const { test } = require("./fixtures");
 
-test.describe('Pruebas de Login', () => {
+test.describe("Pruebas de Login", () => {
+  test("Login exitoso", async ({ loginPage, credentials }) => {
+    await loginPage.login(credentials.usuario, credentials.password);
 
-    let loginPage;
+    await loginPage.validarLoginExitoso();
+  });
 
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page);
+  test("Usuario inválido", async ({ loginPage, credentials }) => {
+    await loginPage.login("incorrectUser", credentials.password);
 
-        await loginPage.navegar(
-            process.env.BASE_URL
-        );
-    });
+    await loginPage.validarUsuarioInvalido();
+  });
 
-    test('Login exitoso', async () => {
+  test("Contraseña inválida", async ({ loginPage, credentials }) => {
+    await loginPage.login(credentials.usuario, "incorrectPassword");
 
-        await loginPage.login(
-            process.env.USERNAME,
-            process.env.PASSWORD
-        );
-
-        await loginPage.validarLoginExitoso();
-    });
-
-    test('Usuario inválido', async () => {
-
-        await loginPage.login(
-            'incorrectUser',
-            process.env.PASSWORD
-        );
-
-        await loginPage.validarUsuarioInvalido();
-    });
-
-    test('Contraseña inválida', async () => {
-
-        await loginPage.login(
-            process.env.USERNAME,
-            'incorrectPassword'
-        );
-
-        await loginPage.validarPasswordInvalido();
-    });
-
+    await loginPage.validarPasswordInvalido();
+  });
 });
