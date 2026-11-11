@@ -1,0 +1,22 @@
+[
+  {
+    "id": "CP-AUTH-02",
+    "name": "Usuario inválido",
+    "username": "incorrectUser",
+    "password": "",
+    "error": "Your username is invalid!"
+  },
+  {
+    "id": "CP-AUTH-03",
+    "name": "Contraseña inválida",
+    "password": "incorrectPassword",
+    "error": "Your password is invalid!"
+  },
+  {
+    "id": "CP-AUTH-04",
+    "name": "Usuario vacío",
+    "username": "",
+    "password": "incorrectPassword",
+    "error": "Your username is invalid!"
+  }
+]
